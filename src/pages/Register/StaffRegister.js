@@ -1,4 +1,4 @@
-import common from '../../assets/images/singleprofilesvgs/common.png'
+// import common from '../../assets/images/singleprofilesvgs/common.png'
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -18,7 +18,7 @@ export default function DevRegisterProfile() {
 
 
     useEffect(() => {
-        axios.get('http://localhost:3001/userlogin').then(res => { setData(res.data) })
+        axios.get('http://localhost:3001/admins').then(res => { setData(res.data) })
     }, [])
 
     const handleSignUp = (e) => {
@@ -27,7 +27,7 @@ export default function DevRegisterProfile() {
         let email_verify = false
         let verification = false
 
-        axios.get('http://localhost:3001/userlogin').then(res => { setData(res.data)})
+        axios.get('http://localhost:3001/admins').then(res => { setData(res.data)})
         data.map((user, index) => {
             document.getElementsByClassName("the-name")[0].setAttribute("style", "background: white;");
             let email_filter = data.filter(user => user.email === email)
@@ -160,22 +160,24 @@ export default function DevRegisterProfile() {
                     let random = Math.floor(Math.random() * 10000000000000);
 
                     e.preventDefault();
-                    setTimeout(function () {
                         // axios.post('http://localhost:3001/users', {
+                    
                         //     id: random,
                         //     name: name,
                         //     email: email,
                         //     user_type: "Admin"
                         // })
-                        axios.post('http://localhost:3001/userlogin', {
-                            id: random,
-                            name: name,
-                            email: email,
-                            password: secondPass,
-                            subject: subject,
-                            branch: branch,
-                            user_type: "Admin",
-                        })
+                    axios.post('http://localhost:3001/admins', {
+                        _id: random,
+                        name: name,
+                        email: email,
+                        password: secondPass,
+                        subject: subject,
+                        branch: branch,
+                        user_type: "Admin",
+                    })
+                    
+                    setTimeout(function () {
                         navigate('/');
                     }, 1500);
                 }

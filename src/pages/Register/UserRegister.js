@@ -1,4 +1,4 @@
-import common from '../../assets/images/singleprofilesvgs/common.png'
+// import common from '../../assets/images/singleprofilesvgs/common.png'
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';

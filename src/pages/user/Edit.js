@@ -27,7 +27,7 @@ function Edit() {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/users/${id}`).then((res) => {
+    axios.get(`http://localhost:3001/students/${id}`).then((res) => {
       setName(res.data.name);
       setEmail(res.data.email);
       setPhone(res.data.phone);
@@ -74,7 +74,7 @@ function Edit() {
 
   function Update(e) {
     e.preventDefault();
-    axios.put(`http://localhost:3001/users/${id}`, data).then(navigate(`/users/${id}`));
+    axios.put(`http://localhost:3001/students/${id}`, data).then(navigate(`/users/${id}`));
   }
   return (
     <div className="w-screen h-full flex flex-col justify-center items-center mt-16">

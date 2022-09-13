@@ -25,7 +25,10 @@ function Add() {
   const [l, setL] = useState("")
 
   const navigate = useNavigate();
+  
+  let random = Math.floor(Math.random() * 10000000000000);
   const data = {
+    _id: random,
     name: name,
     email: email,
     phone: phone,
@@ -36,11 +39,19 @@ function Add() {
     d: d,
     e: e,
     f: f,
+    g: g,
+    h: h,
+    i: i,
+    j: j,
+    k: k,
+    l: l,
+    quiz: quiz,
+    quizz: quizz
   };
 
   function submitForm(e) {
     e.preventDefault();
-    axios.post("http://localhost:3001/users", data).then(navigate("/home"));
+    axios.post("http://localhost:3001/students", data).then(navigate("/home"));
   }
   return (
     <div className="w-screen h-full flex flex-col justify-center items-center mt-16">

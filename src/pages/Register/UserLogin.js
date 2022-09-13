@@ -22,9 +22,9 @@ export default function DevLoginProfile() {
         localStorage.setItem('rl', 'false');
         localStorage.setItem('devLoggedIn', 'false');
 
-        axios.post('http://localhost:3001/loggedInUser', {name: "", id: "", subject: "",branch:"",email:""})
+        axios.post('http://localhost:3001/loggedInUser', {name: "", _id: 0, subject: "",branch:"",email:""})
 
-        axios.get("http://localhost:3001/userlogin")
+        axios.get("http://localhost:3001/admins")
             .then(res => {setProfiles(res.data)},
         )
     }, [])
@@ -50,18 +50,19 @@ export default function DevLoginProfile() {
             if (user.email === email && user.password === pass) {
                 document.getElementsByClassName('hidden-validator')[0].style.display = "none";
                 if (user.user_type === "Admin") {
-                    axios.post('http://localhost:3001/loggedInUser', {name: user.name, id: user.id, subject: user.subject, branch: user.branch, email: user.email})
+                    // axios.post('http://localhost:3001/loggedInUser', {name: user.name, id: user.id, subject: user.subject, branch: user.branch, email: user.email})
+                    axios.post('http://localhost:3001/loggedInUser', {name: user.name, _id: user._id})
                     localStorage.setItem("user_type", "Admin")
                     profiles[profiles.length - 1].isCustomerR = false
                     toast.success("Welcome " + user.name + " (admin)");
                     navigate(`/home`);
                 }
                 if (user.user_type === "Developer") {
-                    axios.post('http://localhost:3001/loggedInUser', {name: user.name, id: user.id})
+                    axios.post('http://localhost:3001/loggedInUser', {name: user.name, _id: user._id})
                     localStorage.setItem("user_type", "Developer")
                     profiles[profiles.length - 1].isCustomerR = false
                     toast.success("Welcome " + user.name + " (Developer)");
-                    navigate(`/users/${user.id}`);
+                    navigate(`/users/${user._id}`);
                 }
             }
             else {

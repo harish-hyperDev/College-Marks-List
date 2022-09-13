@@ -10,18 +10,21 @@ function Home() {
   const {name,subject,branch,email} = save;
 
   function loadUsers() {
-    axios.get("http://localhost:3001/users").then((res) => {
+    axios.get("http://localhost:3001/students").then((res) => {
       setUsers(res.data);
     });
 
-    axios.get("http://localhost:3001/userlogin").then((res) => {
+    axios.get("http://localhost:3001/admins").then((res) => {
       setUserLogin(res.data);
-  })
+    });
   }
 
   useEffect(() => {
     axios.get('http://localhost:3001/loggedInUser').then((res) => {
-    setSave(res.data);
+      axios.get(`http://localhost:3001/admins/${res.data[res.data.length-1]._id}`).then((second_res) => {
+        setSave(second_res.data);
+        console.log(second_res.data);
+      })
     })
   }, [])
 
@@ -30,11 +33,11 @@ function Home() {
   }, []);
 
   function deleteUser(id) {
-    axios.delete(`http://localhost:3001/users/${id}`).then(loadUsers());
+    axios.delete(`http://localhost:3001/students/${id}`).then(loadUsers());
   }
 
   useEffect(() => {
-
+      
   }, [])
 
   return (
@@ -161,17 +164,17 @@ function Home() {
                           {data.roll}
                         </td>
                         <td className="text-sm flex justify-between  items-center text-gray-900 font-bold px-6 py-4 space-x-4 whitespace-nowrap">
-                          <Link to={`/users/${data.id}`} className="bg-teal-600 text-white px-6 py-2 rounded-lg">
+                          <Link to={`/users/${data._id}`} className="bg-teal-600 text-white px-6 py-2 rounded-lg">
                             VIew
                           </Link>
                           <Link
-                            to={`/edit-user/${data.id}`}
+                            to={`/edit-user/${data._id}`}
                             className="bg-blue-600 text-white px-6 py-2 rounded-lg"
                           >
                             Edit
                           </Link>
                           <Link
-                            onClick={() => deleteUser(data.id)}
+                            onClick={() => deleteUser(data._id)}
                             to={"#"}
                             className="bg-red-600 text-white px-6 py-2 rounded-lg"
                           >

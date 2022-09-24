@@ -48,6 +48,9 @@ function Users() {
                 Regulation Type
               </h2>
               <h2 className="text-white font-bold text-3xl border-black border-b-2">
+                Semester
+              </h2>
+              <h2 className="text-white font-bold text-3xl border-black border-b-2">
                 IA Marks
               </h2>
               <h2 className="text-white font-bold text-3xl border-black border-b-2">
@@ -108,6 +111,9 @@ function Users() {
               </h2>
               <h2 className="text-teal-200 font-bold text-3xl border-black border-b-2">
                 {user.phone}
+              </h2>
+              <h2 className="text-teal-200 font-bold text-3xl border-black border-b-2">
+                {user.sem}
               </h2>
               <h2 className="text-teal-200 font-bold text-3xl border-black border-b-2">
                 {user.a}

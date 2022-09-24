@@ -16,23 +16,25 @@ function Edit() {
   const [d,setD] =useState("");
   const [e,setE] =useState("");
   const [f,setF] =useState("");
-    // Mid II
-    const [g, setG] = useState("");
-    const [h, setH] = useState("")
-    const [i, setI] = useState("");
-    const [j, setJ] = useState("")
-    const [k, setK] = useState("");
-    const [l, setL] = useState("")
+  // Mid II
+  const [g, setG] = useState("");
+  const [h, setH] = useState("")
+  const [i, setI] = useState("");
+  const [j, setJ] = useState("")
+  const [k, setK] = useState("");
+  const [l, setL] = useState("")
+  // Sem
+  const [sem, setSem] = useState("");
 
   const { id } = useParams();
 
   useEffect(() => {
     axios.get(`http://localhost:3001/students/${id}`).then((res) => {
-      setName(res.data.name);
-      setEmail(res.data.email);
-      setPhone(res.data.phone);
-      setRoll(res.data.roll);
-      setA(res.data.a);
+      setName(res.data.name)
+      setEmail(res.data.email)
+      setPhone(res.data.phone)
+      setRoll(res.data.roll)
+      setA(res.data.a)
       setB(res.data.b)
       setC(res.data.c)
       setD(res.data.d)
@@ -44,6 +46,7 @@ function Edit() {
       setJ(res.data.j)
       setK(res.data.k)
       setL(res.data.l)
+      setSem(res.data.sem)
       setQuiz(res.data.quiz)
       setQuizz(res.data.quizz)
     });
@@ -68,6 +71,7 @@ function Edit() {
     j: j,
     k: k,
     l: l,
+    sem: sem,
     quiz: quiz,
     quizz: quizz
   };
@@ -119,6 +123,17 @@ function Edit() {
           placeholder="Enter your regulation type"
         />
         </div>
+        </div>
+        <h1 className="font-bold text-3xl">Enter Semester</h1>
+        <div className="font-bold text-3xl">
+          Sem:
+          <input
+          value={sem}
+          onChange={(e) => setSem(e.target.value)}
+          className="bg-white/10 outline-none font-normal border border-zinc-400 py-6 pl-6 mt-4"
+          type="Semester"
+          placeholder="Enter your Semester"
+        />
         </div>
         <h1 className="font-bold text-3xl">Mid I Marks</h1>
         <div className="font-bold text-3xl">

@@ -101,6 +101,12 @@ function Home() {
                         scope="col"
                         className="text-sm font-lg text-white px-6 py-4"
                       >
+                        Semester
+                      </th>
+                      <th
+                        scope="col"
+                        className="text-sm font-lg text-white px-6 py-4"
+                      >
                         Total Mid I Marks
                       </th>
                       <th
@@ -140,6 +146,9 @@ function Home() {
                         </td>
                         <td className="text-xl text-gray-900 font-semibold px-6 py-4 whitespace-nowrap">
                           {data.phone}
+                        </td>
+                        <td className="text-xl text-gray-900 font-semibold px-6 py-4 whitespace-nowrap">
+                          {data.sem}
                         </td>
                         <td className="text-xl text-gray-900 font-semibold px-6 py-4 whitespace-nowrap">
                           {

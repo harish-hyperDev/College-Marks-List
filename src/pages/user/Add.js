@@ -18,11 +18,13 @@ function Add() {
   const [f,setF] =useState("");
   // Mid II
   const [g, setG] = useState("");
-  const [h, setH] = useState("")
+  const [h, setH] = useState("");
   const [i, setI] = useState("");
-  const [j, setJ] = useState("")
+  const [j, setJ] = useState("");
   const [k, setK] = useState("");
-  const [l, setL] = useState("")
+  const [l, setL] = useState("");
+  // Sem
+  const [sem, setSem] = useState("");
 
   const navigate = useNavigate();
   
@@ -45,6 +47,7 @@ function Add() {
     j: j,
     k: k,
     l: l,
+    sem: sem,
     quiz: quiz,
     quizz: quizz
   };
@@ -70,6 +73,14 @@ function Add() {
           className="bg-white/10 outline-none font-normal border border-zinc-400 py-6 pl-6 mt-4"
           type="Gmail"
           placeholder="Enter your Gmail"
+        />        
+        Semester
+        <input
+          value={sem}
+          onChange={(e) => setSem(e.target.value)}
+          className="bg-white/10 outline-none font-normal border border-zinc-400 py-6 pl-6 mt-4"
+          type="Sem"
+          placeholder="Enter your Semester"
         />
         <input
           value={phone}

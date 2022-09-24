@@ -22,11 +22,37 @@ const Report = () => {
   },[search])
 
   useEffect(() => {
-    if(student[0] === 0 || student[0] === undefined) {
+    /* if(student[0] === 0 || student[0] === undefined) {
       document.getElementsByClassName("not-found")[0].classList.remove('hidden');
     } else {
       document.getElementsByClassName("not-found")[0].classList.add('hidden');
-    }
+    } 
+    
+    if (document.getElementsByClassName('student-finder')[0].value === '') {
+      document.getElementsByClassName("not-found")[0].classList.add('hidden');
+    } else {
+      document.getElementsByClassName("not-found")[0].classList.remove('hidden');
+    } */
+
+  },[])
+
+  useEffect(() => {
+    if(student[0] === undefined) {
+      document.getElementsByClassName("not-found")[0].classList.remove('hidden');
+    } else {
+      document.getElementsByClassName("not-found")[0].classList.add('hidden');
+    } 
+    
+    /* if (document.getElementsByClassName('student-finder')[0].value === '') {
+      document.getElementsByClassName("not-found")[0].classList.add('hidden');
+    } else {
+      document.getElementsByClassName("not-found")[0].classList.remove('hidden');
+    } */
+
+    console.log(document.getElementsByClassName('student-finder')[0].value)
+    if(document.getElementsByClassName('student-finder')[0].value === '')
+      setStudent([0]);
+
     console.log('trigger student')
     console.log(student[0])
   }, [student])
@@ -36,9 +62,9 @@ const Report = () => {
 
       <div className="flex mt-10">
         <div className="ml-[40%] flex-start mt-2">Enter <b>Roll Number</b>:</div>
-        <input value={search} onChange={(e) => setSearch(e.target.value)} className="flex-start p-1 border border-black"></input>
+        <input value={search} onChange={(e) => setSearch(e.target.value)} className="flex-start p-1 border border-black student-finder"></input>
       </div>
-      <div className="not-found ml-[50%] mt-2 text-red-500 hidden">Student not found</div>
+      <div className="not-found ml-[50%] mt-2 text-red-500">Student not found</div>
 
       {/* {console.log(student[0].name)} */}
       
@@ -53,6 +79,9 @@ const Report = () => {
             </h2>
             <h2 className="text-white font-bold text-3xl border-black border-b-2">
               Regulation Type
+            </h2>
+            <h2 className="text-white font-bold text-3xl border-black border-b-2">
+              Semester
             </h2>
             <h2 className="text-white font-bold text-3xl border-black border-b-2">
               IA Marks
@@ -115,6 +144,9 @@ const Report = () => {
             </h2>
             <h2 className="text-teal-200 font-bold text-3xl border-black border-b-2">
               {student[0].phone}
+            </h2>
+            <h2 className="text-teal-200 font-bold text-3xl border-black border-b-2">
+              {student[0].sem}
             </h2>
             <h2 className="text-teal-200 font-bold text-3xl border-black border-b-2">
               {student[0].a}

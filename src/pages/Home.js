@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import Report from "./Report";
 
 function Home() {
   const [users, setUsers] = useState([]);
@@ -189,6 +190,10 @@ function Home() {
             </div>
           </div>
         </div>
+
+        {users.length > 0 && <Link to="/report" state={{ props: users }}><button className="absolute right-1 bottom-1 mb-10 mr-10 border rounded border-emerald-600 p-2 bg-emerald-400">
+            Generate Report
+        </button></Link>}
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
+import Report from './pages/Report';
 import Navbar from './pages/Navbar';
 import Add from './pages/user/Add';
 import Edit from './pages/user/Edit';
@@ -16,11 +17,12 @@ function App() {
       <Routes>
         <Route  path="/" exact element={<UserLogin />} />
         <Route  path="/home" exact element={<Home/>} />
+        <Route  path="/report" exact element={<Report/>} />
         <Route  path="/users/:id" exact element={<Users/>} />
         <Route  path="/add-user" exact element={<Add/>} />
         <Route  path="/edit-user/:id" exact element={<Edit/>} />
-        <Route path="/register" element={<UserRegister />} />
-        <Route path="/add-staff" element={<StaffRegister />} />
+        <Route  path="/register" element={<UserRegister />} />
+        <Route  path="/add-staff" element={<StaffRegister />} />
       </Routes>
     </div>
   );
